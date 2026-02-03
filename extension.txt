@@ -1,8 +1,0 @@
-GitLens
-Git Graph
-Todo Tree
-Project Manager
-Path Intellisense
-Error Lens
-MATLAB
-Material Icon Theme
