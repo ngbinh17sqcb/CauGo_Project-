@@ -14,7 +14,17 @@
 ├── CHANGELOG.md
 └── PROJECT_CONTEXT.md
 ```
-
+## Extension đã cài
+```
+- GitLens
+- Git Graph
+- Todo Tree
+- Project Manager
+- Path Intellisense
+- Error Lens
+- MATLAB
+- Material Icon Theme
+```
 ## Workflow
 ```
 UI cũ (.mlapp) ←→ Logic mới (+packages)

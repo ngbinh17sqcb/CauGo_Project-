@@ -2,7 +2,7 @@
 
 ## Tuần 1: Setup + Foundation
 
-### Ngày 1 - 04/02/2025 ✅ HOÀN THÀNH
+### Ngày 1 - 03/02/2025 ✅ HOÀN THÀNH
 **Task:** Setup dự án
 
 **Thời gian:** 40 phút

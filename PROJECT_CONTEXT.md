@@ -28,7 +28,7 @@ UI cũ (.mlapp) ←→ Logic mới (+packages)
 
 **Ngày hiện tại:** 04/02/2025  
 **Tuần:** 1/3  
-**Task hiện tại:** Setup dự án (Ngày 1)
+**Task hiện tại:** Ngày 2 
 
 **Đã hoàn thành:**
 - [x] Folders + Git + Docs
