@@ -2,10 +2,10 @@
 
 ## Tuần 1: Setup + Foundation
 
-### Ngày 1 - 04/02/2025
+### Ngày 1 - 04/02/2025 ✅ HOÀN THÀNH
 **Task:** Setup dự án
 
-**Thời gian:** 1-2 giờ
+**Thời gian:** 40 phút
 
 **Đã làm:**
 - [x] Tạo folder structure (+Data, +TinhToan, +Utils, tests)
@@ -13,20 +13,18 @@
 - [x] Tạo .gitignore
 - [x] Commit baseline
 - [x] Tạo README.md
-- [ ] Tạo CHANGELOG.md (đang làm)
-- [ ] Tạo PROJECT_CONTEXT.md
+- [x] Tạo CHANGELOG.md
+- [x] Tạo PROJECT_CONTEXT.md
 
 **Commits:**
 - `3c7c07d` - chore: baseline - code ban đầu
+- `31b6503` - chore: Khởi tạo dự án, cấu trúc Folder
 
 **Vấn đề:**
 - Không có
 
 **Kế hoạch ngày mai:**
 - Ngày 2: Tạo CauGoData.m (cấu trúc dữ liệu)
-
----
-
 ### Ngày 2 - 05/02/2025
 *(Chưa làm)*
 
