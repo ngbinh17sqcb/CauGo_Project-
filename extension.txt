@@ -1,0 +1,14 @@
+GitLens
+Git Graph
+Markdown All in One
+Todo Tree
+Project Manager
+Path Intellisense
+Error Lens
+Bracket Pair Colorizer 2
+MATLAB
+Material Icon Theme
+
+
+
+% Nên cài mấy cái này
