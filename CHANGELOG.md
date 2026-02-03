@@ -16,6 +16,7 @@
 - [x] Tạo CHANGELOG.md
 - [x] Tạo PROJECT_CONTEXT.md
 - [x] Liên kết thành công với Github Webm chuyển từ git local sang git web onlien thành công!
+- [x] Liên kết làm việc với VS Code, code .m dùng VS Code, còn UI dùng Matlab-App designer
 
 **Commits:**
 - `3c7c07d` - chore: baseline - code ban đầu
