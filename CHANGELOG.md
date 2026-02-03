@@ -15,6 +15,7 @@
 - [x] Tạo README.md
 - [x] Tạo CHANGELOG.md
 - [x] Tạo PROJECT_CONTEXT.md
+- [x] Liên kết thành công với Github Webm chuyển từ git local sang git web onlien thành công!
 
 **Commits:**
 - `3c7c07d` - chore: baseline - code ban đầu
