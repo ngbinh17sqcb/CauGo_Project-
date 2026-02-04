@@ -13,7 +13,7 @@
 - [x] Tạo .gitignore
 - [x] Commit baseline
 - [x] Tạo README.md, CHANGELOG.md, PROJECT_CONTEXT.md
-- [x] Cài đặt thành công bộ Exxtension cần thiêt (lưu tại Readme.md)
+- [x] Cài đặt thành công bộ Extension cần thiêt (lưu tại Readme.md)
 - [x] Liên kết thành công với Github Webm chuyển từ git local sang git web onlien thành công!
 - [x] Liên kết làm việc với VS Code, code .m dùng VS Code, còn UI dùng Matlab-App designer
 
