@@ -1,69 +1,53 @@
-# PROJECT CONTEXT - CẦU GỖ
+# PROJECT_CONTEXT
 
-> Cập nhật: 03/02/2026        
+## 1. Thông tin chung
 
+- Tên dự án: CauGo_Project
+- Phiên bản: Rebuild 2026
+- Chủ trì: Bình
+- Năm thực hiện: 2026
 
-## Thông tin dự án
+---
 
-- **Tên:** Phần mềm thiết kế cầu gỗ
-- **Mục tiêu:** Viết lại logic, giữ UI cũ
-- **Thời gian:** 14-21 ngày
-- **Công nghệ:** MATLAB App Designer
+## 2. Định hướng phát triển
 
-## Cấu trúc
-```
-/CauGo_Project/
-├── CauGo_AI.mlapp              # UI cũ (KHÔNG SỬA)
-├── +Data/                      # Data structure
-├── +TinhToan/                  # Logic tính toán
-├── +Utils/                     # Utilities
-└── tests/                      # Tests
-```
+Dự án được làm lại từ đầu với mục tiêu:
 
-## Workflow
-```
-UI cũ (.mlapp) ←→ Logic mới (+packages)
-```
+- Giữ lại giao diện cũ.
+- Viết lại toàn bộ lõi tính toán.
+- Tách biệt UI và Logic.
+- Phát triển theo từng bước nhỏ, hoàn thành bước nào chắc bước đó.
 
-## Tiến độ
+---
 
-**Ngày hiện tại:** 04/02/2025  
-**Tuần:** 1/3  
-**Task hiện tại:** Ngày 2 
+## 3. Trạng thái hiện tại
 
-**Đã hoàn thành:**
-- [x] Folders + Git + Docs
+- UI: Có (phiên bản cũ).
+- Core: Chưa có.
+- Data structure: Chưa thiết kế.
+- Tests: Chưa có.
 
-**Tiếp theo:**
-- [ ] Ngày 2: CauGoData.m
+---
 
-## Quy ước
+## 4. Nguyên tắc làm việc
 
-### Commit
-```
-feat:  tính năng mới
-fix:   sửa lỗi
-test:  test
-docs:  tài liệu
-chore: setup/config
-```
+- Không sửa file cũ nếu không cần thiết.
+- Không viết logic trong .mlapp.
+- Mỗi bước phải chạy được trước khi tiếp tục.
+- Commit theo từng task rõ ràng.
 
-### Naming
-- Files: PascalCase (DamCau.m)
-- Functions: camelCase (tinhDamCau)
-- Variables: snake_case (chieu_dai)
+---
 
-## Làm việc với AI
+## 5. Kế hoạch trước mắt
 
-**Mỗi ngày:**
-```
-1. Upload: PROJECT_CONTEXT.md + CHANGELOG.md
-2. Nói: "Em làm dự án cầu gỗ, hôm nay làm [task X]"
-```
+Bước 1: Chuẩn hoá cấu trúc dự án.  
+Bước 2: Thiết kế cấu trúc dữ liệu (DS).  
+Bước 3: Tạo khung core rỗng.  
+Bước 4: Kết nối UI với core mới.  
+Bước 5: Viết từng module tính toán (DamCau → ChanGia → ...).
 
-## Lưu ý
+---
 
-- KHÔNG sửa .mlapp trực tiếp
-- Test trước khi commit
-- Commit nhỏ, thường xuyên
-- Cập nhật CHANGELOG mỗi ngày
+## 6. Lưu ý quan trọng
+
+Mục tiêu của bản 2026 không phải làm nhanh, mà làm đúng kiến trúc để có thể mở rộng lâu dài.

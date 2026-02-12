@@ -2,41 +2,60 @@
 
 > **Dành cho:** Người mới học code, đang "vibe code"  
 > **Mục tiêu:** Học đủ để hoàn thành dự án, không học thừa  
-> **Phương pháp:** Học-Làm-Học-Làm (không học trước hết)
+> **Phương pháp:** Học–Làm–Học–Làm (không học trước hết)
+
+---
+
+## 🧭 CẬP NHẬT TRẠNG THÁI (mới nhất: 13/02/2026)
+
+### ✅ Đã xong (đang dùng được cho dự án)
+- [x] Variables & Data Types (số, chuỗi, logic, mảng).  
+- [x] Quy ước đặt tên `snake_case` + gắn đơn vị (khuyến nghị đặt đơn vị ngay trong tên biến, ví dụ `chieu_dai_m`).  
+- [x] Struct (struct rỗng, field, struct lồng nhau, `isfield`).  
+- [x] Pattern dữ liệu chuẩn: **UI → DS (struct) → Validate → Tính → DS.KetQua → UI**.  
+- [x] Validation cơ bản (`if`, chặn chia 0/đầu vào sai).  
+- [x] Tách logic ra file `.m` (pure function). Ví dụ: `calc_khoang_cach_dam.m`.  
+- [x] Hiểu `error()` (core) vs `uialert()` (UI).  
+- [x] Hiểu dấu `...` để xuống dòng cho dễ đọc (không bắt buộc khi dòng ngắn).  
+
+### ⏭️ Next (ưu tiên làm tiếp)
+- [ ] `try – catch` trong App để **bắt lỗi không làm app crash**.  
+- [ ] Chuẩn hoá thư mục: `+TinhToan`, `+Utils` (đúng kiểu dự án).  
+- [ ] Viết thêm 3–5 hàm tính lõi (rồi mới nghĩ tới unit test).  
+
+### ⏸️ Tạm hoãn (chưa cần gấp)
+- [ ] Classes & Objects (OOP): chỉ học khi bạn **thực sự cần** đóng gói dữ liệu/logic phức tạp; chưa vội.  
 
 ---
 
 ## 🎯 NGUYÊN TẮC HỌC
 
 ### ✅ LÀM
-- Học theo TASK (cần gì học nấy)
-- Học 15-30 phút/kiến thức
-- Làm ngay sau khi học
-- Gặp lỗi → Google/ChatGPT → học thêm
+- Học theo TASK (cần gì học nấy).  
+- Mỗi mảng kiến thức 15–30 phút.  
+- Học xong phải chạy được 1 ví dụ tối thiểu.  
+- Gặp lỗi → đọc error message → sửa → ghi lại “nguyên nhân – cách fix”.  
 
 ### ❌ TRÁNH
-- Học hết rồi mới làm
-- Học quá sâu (ví dụ: OOP nâng cao)
-- Học ngôn ngữ khác (Python, C++...)
-- Xem tutorial dài 2-3 tiếng
+- Học hết rồi mới làm.  
+- Học quá sâu (OOP nâng cao, tối ưu hiệu năng sớm).  
+- Nhảy sang ngôn ngữ khác khi chưa xong MATLAB.  
+- Xem tutorial dài 2–3 tiếng liên tục.  
 
 ---
 
-## 📚 KIẾN THỨC 1: MATLAB CƠ BẢN
+## 📚 KIẾN THỨC 1: MATLAB NỀN TẢNG (đã triển khai trong dự án)
 
-### 1.1. Variables & Data Types (15 phút)
-**Khi nào cần:** Ngày 2-3
-
+### 1.1. Variables & Data Types (DONE)
 **Học gì:**
 ```matlab
 % Số
-a = 10;           % integer
+a = 10;           % integer (thực tế MATLAB thường là double)
 b = 3.14;         % float
 c = 5e3;          % scientific notation
 
-% Chuỗi
-ten = 'Cầu Gỗ';
-ten2 = "Cầu Gỗ"; % string (MATLAB mới)
+% Chuỗi (khuyến nghị dùng string)
+ten = "Cầu Gỗ";
 
 % Logic
 isValid = true;
@@ -47,535 +66,193 @@ arr = [1, 2, 3, 4, 5];
 matrix = [1 2; 3 4];
 ```
 
-**Tài liệu:**
-- MATLAB Docs: "Numeric Types"
-- YouTube: "MATLAB Basics" (10 phút đầu)
-
-**Lưu ý cho dự án:**
-- Dùng `snake_case` cho biến: `chieu_dai`, `mat_do`
-- Comment đơn vị: `chieu_dai % m`
+**Lưu ý cho dự án (chuẩn hoá):**
+- Dùng `snake_case`.  
+- Gắn đơn vị trong tên biến (khuyến nghị): `chieu_dai_m`, `tai_trong_T`, `sigma_allow_kgcm2`.  
+- Chỉ comment đơn vị khi cần giải thích thêm.  
 
 ---
 
-### 1.2. Structs (20 phút)
-**Khi nào cần:** Ngày 2 (tạo CauGoData)
-
+### 1.2. Structs (DONE)
 **Học gì:**
 ```matlab
-% Tạo struct rỗng
 cau = struct();
+cau.chieu_dai_m = 10;
+cau.chieu_rong_m = 2;
 
-% Thêm field
-cau.chieu_dai = 10;
-cau.chieu_rong = 2;
+cau.vat_lieu.loai = "Thong";
+cau.vat_lieu.mat_do_kgm3 = 500;
 
-% Struct lồng nhau
-cau.vat_lieu.loai = 'Thong';
-cau.vat_lieu.mat_do = 500;
+L = cau.chieu_dai_m;
 
-% Truy xuất
-L = cau.chieu_dai;
-loai_go = cau.vat_lieu.loai;
-
-% Kiểm tra field tồn tại
-if isfield(cau, 'chieu_dai')
-    disp('Có chiều dài');
+if isfield(cau, "chieu_dai_m")
+    disp("Có chiều dài");
 end
 ```
 
-**Tài liệu:**
-- MATLAB Docs: "Structures"
-- Video: "MATLAB Struct Tutorial" (15 phút)
-
-**Bài tập ngay:**
+**Bài tập (đã làm/đang làm):**
+- Dùng `DS` làm DataStore cho toàn app:
 ```matlab
-% Tạo struct mô tả cây cầu của bạn
-my_bridge = struct();
-my_bridge.ten = 'Cầu gỗ thử nghiệm';
-my_bridge.kich_thuoc.dai = 10;
-my_bridge.kich_thuoc.rong = 2;
-disp(my_bridge);
+DS.ThongSo.chieu_dai_m = 12;
+DS.ThongSo.so_dam_n = 8;
 ```
 
 ---
 
-### 1.3. Classes & Objects (30 phút)
-**Khi nào cần:** Ngày 3-4
+### 1.3. Validation (DONE – bắt buộc cho app nghiêm túc)
+**Mục tiêu:** nhập sai thì **báo lỗi rõ**, không crash, không tính tiếp.
 
-**Học gì:**
+**Core (file .m):**
 ```matlab
-% File: MyClass.m
-classdef MyClass
-    properties
-        ten
-        tuoi
-    end
-    
-    methods
-        % Constructor
-        function obj = MyClass(ten, tuoi)
-            obj.ten = ten;
-            obj.tuoi = tuoi;
-        end
-        
-        % Method
-        function gioi_thieu(obj)
-            fprintf('Tôi là %s, %d tuổi\n', obj.ten, obj.tuoi);
-        end
-    end
+if so_dam_n <= 1
+    error("So dam phai lon hon 1.");
 end
-
-% Sử dụng:
-nguoi = MyClass('Bình', 25);
-nguoi.gioi_thieu();
 ```
 
-**Khái niệm cần hiểu:**
-- `properties`: Biến của class (như struct)
-- `methods`: Function của class
-- `obj`: Tham chiếu đến object hiện tại
-- Constructor: Hàm khởi tạo
-
-**Tài liệu:**
-- MATLAB Docs: "Classes and Objects"
-- Video: "MATLAB OOP Tutorial" (20 phút đầu, BỎ QUA phần nâng cao)
-
-**Bài tập ngay:**
+**UI (App Designer):**
 ```matlab
-% Viết class HinhChuNhat
-% Properties: chieu_dai, chieu_rong
-% Methods: tinhDienTich(), tinhChuVi()
+uialert(app.UIFigure, "So dam phai lon hon 1", "Loi du lieu");
+return
 ```
 
 ---
 
-### 1.4. Functions (25 phút)
-**Khi nào cần:** Ngày 4-7 (tạo logic tính toán)
+### 1.4. Functions (DONE – đang áp dụng)
+**Mục tiêu:** tách logic tính khỏi UI/DS, dễ test, dễ tái sử dụng.
 
-**Học gì:**
+**Ví dụ file:** `calc_khoang_cach_dam.m`
 ```matlab
-% File: tinhTong.m
-function ket_qua = tinhTong(a, b)
-    % Tính tổng 2 số
-    ket_qua = a + b;
-end
-
-% Nhiều output
-function [tong, hieu] = tinhTongHieu(a, b)
-    tong = a + b;
-    hieu = a - b;
-end
-
-% Optional parameters
-function ket_qua = nhanSo(a, b, he_so)
-    if nargin < 3
-        he_so = 1;  % Giá trị mặc định
+function khoang_cach_dam_m = calc_khoang_cach_dam(chieu_dai_m, so_dam_n)
+    if so_dam_n <= 1
+        error("So dam phai lon hon 1.");
     end
-    ket_qua = (a * b) * he_so;
+    khoang_cach_dam_m = chieu_dai_m / (so_dam_n - 1);
 end
 ```
 
-**Lưu ý quan trọng:**
-- Tên file = tên function
-- 1 file chỉ 1 function chính
-- Đặt trong package: `+TinhToan/tinhDamCau.m`
-
-**Tài liệu:**
-- MATLAB Docs: "Function Basics"
-
-**Bài tập ngay:**
+**Gọi (có thể 1 dòng hoặc xuống dòng bằng `...`):**
 ```matlab
-% Viết function tinhTheTichHCN(dai, rong, cao)
-% Viết function kiemTraHopLe(value, min, max)
+DS.KetQua.khoang_cach_dam_m = ...
+    calc_khoang_cach_dam(DS.ThongSo.chieu_dai_m, DS.ThongSo.so_dam_n);
 ```
 
 ---
 
-### 1.5. Packages (15 phút)
-**Khi nào cần:** Ngày 4
+### 1.5. Packages (NEXT – làm sớm để project sạch)
+**Mục tiêu:** chuẩn hoá dự án theo module.
 
-**Học gì:**
-```matlab
-% Cấu trúc folder:
+**Cấu trúc khuyến nghị:**
+```
 /CauGo_Project/
   +TinhToan/
-    tinhDamCau.m
-    tinhMomentUon.m
+    calc_khoang_cach_dam.m
+    calc_Mmax.m
   +Utils/
-    validate.m
-
-% File: +TinhToan/tinhDamCau.m
-function M = tinhDamCau(L, q)
-    M = q * L^2 / 8;
-end
-
-% Gọi từ ngoài:
-M = TinhToan.tinhDamCau(10, 5);
-
-% Hoặc import:
-import TinhToan.*;
-M = tinhDamCau(10, 5);
+    validate_positive_int.m
+    validate_range.m
 ```
 
-**Quy tắc:**
-- Folder bắt đầu bằng `+`
-- Gọi bằng `TenPackage.TenFunction`
-
-**Tài liệu:**
-- MATLAB Docs: "Packages"
+**Gọi hàm trong package:**
+```matlab
+a = TinhToan.calc_khoang_cach_dam(12, 8);
+```
 
 ---
 
-## 📚 KIẾN THỨC 2: APP DESIGNER
+## 📚 KIẾN THỨC 2: APP DESIGNER (đi theo đúng pattern)
 
-### 2.1. Callbacks Cơ Bản (20 phút)
-**Khi nào cần:** Ngày 8-10
-
-**Học gì:**
-```matlab
-% Trong App Designer:
-
-% Button Callback
-function ButtonPushed(app, event)
-    % Lấy giá trị từ UI
-    L = app.ChieuDaiEditField.Value;
-    
-    % Tính toán
-    M = TinhToan.tinhDamCau(L, 5);
-    
-    % Hiển thị kết quả
-    app.KetQuaLabel.Text = sprintf('M = %.2f kNm', M);
-end
-```
-
-**Khái niệm:**
-- `app`: Tham chiếu đến UI
-- `event`: Sự kiện (click, change...)
-- `app.ComponentName`: Truy xuất component
-
-**Tài liệu:**
-- MATLAB Docs: "App Designer Callbacks"
-- Video: "MATLAB App Designer Tutorial Part 2"
+### 2.1. Callbacks Cơ Bản (đang chuẩn bị/áp dụng)
+**Nguyên tắc vàng:** callback ngắn, chỉ làm 3 việc:
+1) UI → DS.  
+2) Gọi core tính toán.  
+3) DS.KetQua → UI.  
 
 ---
 
-### 2.2. Truyền Dữ Liệu UI ↔ Logic (25 phút)
-**Khi nào cần:** Ngày 9-10
+### 2.2. Truyền Dữ Liệu UI ↔ Logic (đang áp dụng)
+**Pattern chuẩn:**
+```
+UI Input → DS.ThongSo → Validate → Core Calc → DS.KetQua → UI Output
+```
 
-**Học gì:**
+**Bước tiếp theo bắt buộc (NEXT):** `try – catch`
 ```matlab
-% Trong App Designer, thêm property:
-properties (Access = private)
-    cauGoData  % Object CauGoData
+try
+    DS.KetQua.khoang_cach_dam_m = ...
+        TinhToan.calc_khoang_cach_dam(DS.ThongSo.chieu_dai_m, DS.ThongSo.so_dam_n);
+catch ME
+    uialert(app.UIFigure, ME.message, "Loi du lieu");
+    return
 end
-
-% Startup callback:
-function startupFcn(app)
-    app.cauGoData = Data.CauGoData();
-end
-
-% Button callback:
-function TinhToanButtonPushed(app, event)
-    % Cập nhật data từ UI
-    app.cauGoData.chieu_dai = app.ChieuDaiEditField.Value;
-    app.cauGoData.chieu_rong = app.ChieuRongEditField.Value;
-    
-    % Tính toán
-    app.cauGoData.tinhTrongLuongBanThan();
-    
-    % Hiển thị
-    app.TrongLuongLabel.Text = sprintf('%.2f kN', ...
-        app.cauGoData.tai_trong_ban_than);
-end
-```
-
-**Pattern quan trọng:**
-```
-UI Input → Update Object → Calculate → Display Result
 ```
 
 ---
 
 ## 📚 KIẾN THỨC 3: TESTING & DEBUGGING
 
-### 3.1. Debug Cơ Bản (15 phút)
-**Khi nào cần:** Khi gặp lỗi (mọi ngày)
+### 3.1. Debug Cơ Bản (đang dùng hằng ngày)
+- `disp`, `fprintf`.  
+- Breakpoint.  
+- Step (F10/F11).  
+- Workspace.  
 
-**Học gì:**
-```matlab
-% 1. Dùng disp/fprintf
-disp(my_variable);
-fprintf('Giá trị: %f\n', value);
-
-% 2. Breakpoint
-% Click vào số dòng trong editor → chạy → dừng tại đó
-
-% 3. Step through
-% F10: Next line
-% F11: Step into function
-% Shift+F5: Continue
-
-% 4. Workspace
-% Xem tất cả biến đang có
-```
-
-**Tài liệu:**
-- MATLAB Docs: "Debugging"
+### 3.2. Unit Tests Đơn Giản (LÀM SAU khi có 5–7 hàm core)
+Chỉ bắt đầu test khi core đã có “khối lượng”.
 
 ---
 
-### 3.2. Unit Tests Đơn Giản (20 phút)
-**Khi nào cần:** Ngày 6-7
+## 📚 KIẾN THỨC 4: GIT (giữ nguyên, dùng khi cần)
 
-**Học gì:**
-```matlab
-% File: tests/testTinhToan.m
-classdef testTinhToan < matlab.unittest.TestCase
-    
-    methods (Test)
-        function testTinhTong(testCase)
-            % Arrange
-            a = 5;
-            b = 3;
-            expected = 8;
-            
-            % Act
-            actual = tinhTong(a, b);
-            
-            % Assert
-            testCase.verifyEqual(actual, expected);
-        end
-        
-        function testChieuDaiAm(testCase)
-            % Test trường hợp lỗi
-            data = Data.CauGoData();
-            data.chieu_dai = -5;
-            
-            isValid = data.kiemTraHopLe();
-            testCase.verifyFalse(isValid);
-        end
-    end
-end
-
-% Chạy test:
-runtests('testTinhToan')
-```
-
-**Pattern AAA:**
-- Arrange: Chuẩn bị
-- Act: Thực thi
-- Assert: Kiểm tra
+- Branching.  
+- Stash.  
 
 ---
 
-## 📚 KIẾN THỨC 4: GIT NÂNG CAO
+## 🎓 LỘ TRÌNH THEO TUẦN (đã chỉnh theo thực tế bạn đang làm)
 
-### 4.1. Branching (15 phút)
-**Khi nào cần:** Ngày 5-6
+### TUẦN 1: Nền tảng + Core (DONE phần lớn)
+- Variables + Struct.  
+- DS pattern (UI → DS → Validate → Calc → UI).  
+- Validation.  
+- Tách function core ra file `.m`.  
 
-**Học gì:**
-```bash
-# Tạo branch mới
-git checkout -b feature/tinh-dam-cau
+### TUẦN 2: Chuẩn hoá project + Bắt lỗi (NEXT)
+- Packages: `+TinhToan`, `+Utils`.  
+- `try – catch` trong App.  
+- Viết thêm 3–5 hàm core theo module (mỗi hàm có validate).  
 
-# Làm việc, commit bình thường
-git add .
-git commit -m "feat: thêm hàm tính dầm cầu"
-
-# Chuyển về main
-git checkout main
-
-# Merge branch
-git merge feature/tinh-dam-cau
-
-# Xóa branch (sau khi merge)
-git branch -d feature/tinh-dam-cau
-```
-
-**Khi nào dùng:**
-- Làm tính năng lớn
-- Thử nghiệm (không chắc chắn)
-- Làm song song nhiều thứ
+### TUẦN 3: Kết nối UI hoàn chỉnh + Test nhẹ
+- Hoàn thiện callbacks theo pattern.  
+- Thêm log/debug có kiểm soát.  
+- Unit test cơ bản cho các hàm core.  
 
 ---
 
-### 4.2. Stash (10 phút)
-**Khi nào cần:** Khi làm dở phải chuyển việc
+## ✅ CHECKLIST TỐI THIỂU (update)
 
-**Học gì:**
-```bash
-# Lưu công việc dở dang
-git stash
+### Trước khi làm UI nặng
+- [x] Struct + DS.  
+- [x] Function core.  
+- [x] Validation.  
+- [ ] Package hoá module.  
+- [ ] `try – catch` chuẩn trong callback.  
 
-# Làm việc khác...
-git checkout other-branch
-
-# Quay lại, lấy lại công việc
-git checkout main
-git stash pop
-```
+### Trước khi “chốt” app để nộp
+- [ ] Có tối thiểu 5–7 hàm core độc lập.  
+- [ ] UI chỉ là vỏ, core chạy được khi gọi trực tiếp từ Command Window.  
+- [ ] Có 3–5 case test cơ bản (đúng + sai).  
 
 ---
 
-## 🎓 LỘ TRÌNH HỌC THEO TUẦN
-
-### TUẦN 1: Data & Functions
-```
-Ngày 2: 
-  - Variables (15') → Làm
-  - Structs (20') → Làm CauGoData v1
-
-Ngày 3:
-  - Classes (30') → Mở rộng CauGoData
-  - Debug (15') → Test CauGoData
-
-Ngày 4:
-  - Functions (25') → Viết function đầu tiên
-  - Packages (15') → Tạo +TinhToan
-
-Ngày 5:
-  - Tiếp tục viết functions
-  - Git branching (15')
-```
-
-### TUẦN 2: Logic + Testing
-```
-Ngày 6-7:
-  - Viết logic tính toán
-  - Unit tests (20')
-
-Ngày 8:
-  - Callbacks (20') → Kết nối UI
-
-Ngày 9-10:
-  - UI ↔ Logic (25') → Hoàn thiện kết nối
-```
-
-### TUẦN 3: Hoàn thiện
-```
-Ngày 11-14:
-  - Debug
-  - Test toàn bộ
-  - Refactor nhẹ
-```
+## 🚫 SAI LẦM THƯỜNG GẶP (nhắc lại, vì rất dễ dính)
+- Copy code không hiểu → chạy được nhưng không sửa được.  
+- Dồn mọi thứ vào callback.  
+- Không validate dữ liệu đầu vào.  
+- Refactor quá sớm khi chưa chạy được end-to-end.  
 
 ---
 
-## 📖 TÀI LIỆU THAM KHẢO
-
-### Tài liệu chính (ƯU TIÊN)
-1. **MATLAB Documentation** (official)
-   - Tìm kiếm: "matlab [tên khái niệm]"
-   - Ví dụ: "matlab struct", "matlab class"
-
-2. **MATLAB Onramp** (FREE course - 2 giờ)
-   - Link: mathworks.com/learn/tutorials/matlab-onramp
-   - LÀM NGAY nếu còn thời gian
-
-### Video hữu ích
-1. "MATLAB Tutorial for Beginners" - YouTube (chọn video < 30 phút)
-2. "MATLAB App Designer Tutorial" - YouTube (xem phần 1-2)
-
-### Khi gặp lỗi
-1. Copy error message → Google
-2. Stack Overflow
-3. ChatGPT/Claude (paste code + lỗi)
-
----
-
-## ✅ CHECKLIST KIẾN THỨC TỐI THIỂU
-
-### Trước khi bắt đầu Tuần 2:
-- [ ] Biết tạo class với properties và methods
-- [ ] Biết viết function có input/output
-- [ ] Biết dùng package (+TinhToan)
-- [ ] Biết debug bằng disp và breakpoint
-
-### Trước khi bắt đầu Tuần 3:
-- [ ] Biết viết callback trong App Designer
-- [ ] Biết truyền data từ UI → Logic → UI
-- [ ] Biết viết 1 unit test đơn giản
-
----
-
-## 💡 MẸO HỌC HIỆU QUẢ
-
-### 1. Học 20-80
-- 20% thời gian: Học lý thuyết
-- 80% thời gian: Làm thực hành
-
-### 2. Copy-Paste thông minh
-- Copy code mẫu → Chạy → Hiểu → Sửa → Làm lại không nhìn
-
-### 3. Note ngắn gọn
-```matlab
-% CHÚ THÍCH CỦA TÔI: Hàm này tính moment uốn
-% Input: L (m), q (kN/m)
-% Output: M (kNm)
-% Công thức: M = qL²/8
-function M = tinhMomentUon(L, q)
-    M = q * L^2 / 8;
-end
-```
-
-### 4. Hỏi AI đúng cách
-❌ "Code giúp tôi tính cầu gỗ"
-✅ "Em có struct CauGoData với field chieu_dai, chieu_rong. Em muốn viết method tinhDienTich(). Code mẫu như thế nào?"
-
----
-
-## 🚫 SAI LẦM THƯỜNG GẶP (TRÁNH)
-
-### 1. Học quá nhiều trước khi làm
-- ❌ Xem hết khóa MATLAB 10 giờ
-- ✅ Học struct 20 phút → làm CauGoData ngay
-
-### 2. Copy code không hiểu
-- ❌ Copy nguyên code AI → chạy → commit
-- ✅ Copy → Đọc từng dòng → Sửa → Hiểu → Commit
-
-### 3. Không test
-- ❌ Viết xong 10 functions → test 1 lần
-- ✅ Viết 1 function → test ngay → viết tiếp
-
-### 4. Refactor quá sớm
-- ❌ Code xong 50% → "để tôi viết lại cho đẹp"
-- ✅ Code xong 100% → chạy được → refactor
-
----
-
-## 📞 KHI NÀO CẦN HỌC THÊM?
-
-### GẶP CÁI NÀY → HỌC NGAY:
-- Error message không hiểu
-- Cần tính năng mới (ví dụ: đọc file Excel)
-- Code chạy sai kết quả
-
-### GẶP CÁI NÀY → BỎ QUA:
-- "Advanced OOP in MATLAB"
-- "MATLAB for Machine Learning"
-- "MATLAB Performance Optimization"
-- Bất cứ thứ gì có chữ "Advanced"
-
----
-
-## 🎯 MỤC TIÊU CUỐI CÙNG
-
-Sau 14 ngày, bạn sẽ:
-- ✅ Hiểu struct, class, function, package
-- ✅ Viết được logic tính toán
-- ✅ Kết nối UI với logic
-- ✅ Debug khi có lỗi
-- ✅ Commit có hệ thống
-- ✅ **HOÀN THÀNH DỰ ÁN**
-
-**KHÔNG CẦN:**
-- ❌ Trở thành MATLAB expert
-- ❌ Hiểu hết MATLAB documentation
-- ❌ Code đẹp như sách giáo khoa
-
-**CHỈ CẦN:**
-- ✅ Code chạy được
-- ✅ Logic đúng
-- ✅ Có thể sửa khi cần
-
+## 🎯 MỤC TIÊU CUỐI
+- Core tính toán chạy đúng, tách rời UI.  
+- UI gọi core an toàn (try–catch + uialert).  
+- Project sạch, dễ mở rộng, dễ debug.  

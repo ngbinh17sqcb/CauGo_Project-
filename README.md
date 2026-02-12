@@ -1,96 +1,59 @@
-# PHẦN MỀM THIẾT KẾ CẦU GỖ
-## -- ================== WORKFLOW REMINDER ==================
+# CauGo_Project (2026 Rebuild)
 
-🧠 NÃO CÁ VÀNG – ĐỌC LẠI TRƯỚC KHI LÀM VIỆC 🧠
+Phần mềm tính toán Cầu gỗ phục vụ học tập, nghiên cứu và phát triển theo hướng chuẩn hoá, tách biệt UI và lõi tính toán.
 
-1. README.md
-   - Dùng để giới thiệu dự án.
-   - Trả lời: Dự án này là gì? Cấu trúc ra sao? Dùng thế nào?
-   - KHÔNG ghi nhật ký từng ngày.
+---
 
-2. CHANGELOG.md
-   - Dùng để ghi lại những gì ĐÃ LÀM theo thời gian.
-   - Mỗi TASK xong → thêm 1–2 dòng.
-   - Ghi ngắn gọn, theo ngày/tuần.
+## 1. Mục tiêu phiên bản 2026
 
-3. PROJECT_CONTEXT.md
-   - NÃO CỦA DỰ ÁN.
-   - Ghi: mục tiêu, logic chính, quy ước, quyết định quan trọng.
-   - Dùng khi quay lại sau vài ngày hoặc nhờ AI hỗ trợ.
+- Làm lại phần mềm từ đầu.
+- Giữ lại giao diện (UI) của phiên bản cũ.
+- Viết lại toàn bộ lõi tính toán theo kiến trúc rõ ràng.
+- Tách UI và Logic để dễ bảo trì, test và mở rộng.
+- Làm việc chuẩn Git + VS Code + MATLAB.
 
---------------------------------------------
+---
 
-📌 NGUYÊN TẮC COMMIT (NHỚ KỸ):
-- Commit theo TASK HOÀN CHỈNH.
-- KHÔNG commit theo giờ, KHÔNG commit nửa chừng.
-- 1 ngày commit nhiều lần = OK, miễn là xong việc.
+## 2. Kiến trúc dự án
 
-📌 QUY TRÌNH CHUẨN:
-- Làm xong 1 task
-- Cập nhật CHANGELOG.md
-- Commit
-
-📌 COMMIT MESSAGE MẪU:
-- feat: thêm chức năng mới
-- fix: sửa lỗi
-- docs: cập nhật tài liệu
-- chore: việc linh tinh (config, folder, extension)
-
-======================================================== -->
-
-
-> Dự án viết lại logic tính toán, giữ nguyên UI
-
-## Cấu trúc dự án
-```
-/CauGo_Project/
-├── CauGo_AI.mlapp              # UI cũ (KHÔNG SỬA)
-├── +Data/                      # Cấu trúc dữ liệu
-├── +TinhToan/                  # Logic tính toán
-├── +Utils/                     # Tiện ích
-├── tests/                      # Unit tests
+CauGo_Project/
+│```
+├── app/ % Chứa file .mlapp (UI)
+├── core/ % Lõi tính toán
+├── data/ % Cấu trúc dữ liệu (DS, validate, mapping)
+├── ui/ % Hàm trung gian giữa UI và core
+├── tests/ % Script test không cần mở UI
+│
+├── run_app.m % Entry point
 ├── README.md
 ├── CHANGELOG.md
 └── PROJECT_CONTEXT.md
 ```
-## Extension đã cài
-```
-- GitLens
-- Git Graph
-- Todo Tree
-- Project Manager
-- Path Intellisense
-- Error Lens
-- MATLAB
-- Material Icon Theme
-```
-## Workflow
-```
-UI cũ (.mlapp) ←→ Logic mới (+packages)
-```
 
-## Cách chạy
-```matlab
-% Mở MATLAB
-CauGo_AI  % Chạy app
-```
+---
 
-## Cách test
-```matlab
-runtests('tests')
-```
+## 3. Nguyên tắc phát triển
 
-## Quy ước
+- Không viết logic trong UI.
+- UI chỉ làm nhiệm vụ hiển thị và nhận input.
+- Mọi tính toán phải nằm trong `core/`.
+- Mỗi bước hoàn thành xong mới chuyển bước tiếp theo.
+- Mỗi task phải có commit riêng.
 
-- **Commit:** feat/fix/test/docs/chore
-- **Naming:** PascalCase cho files, camelCase cho functions
-- **Test:** Test trước khi commit
+---
 
-## Lộ trình
+## 4. Workflow chuẩn
 
-14-21 ngày, mỗi ngày 1-2 giờ
+1. Sửa code
+2. Test chạy được
+3. Cập nhật CHANGELOG
+4. Commit
+5. Push
 
-## Liên hệ
+---
 
-- **Tác giả:** [Nguyễn Thanh Bình]
-- **Email:** [ngbinh17sqcb@gmail.com]
+## 5. Trạng thái hiện tại
+
+Đang trong giai đoạn Rebuild 2026:
+- Chưa có lõi tính toán.
+- Chuẩn bị thiết kế lại cấu trúc dữ liệu.
