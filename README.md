@@ -1,30 +1,36 @@
-# CauGo_Project (2026 Rebuild)
+# CauGo_Project — Rebuild 2026
 
-Phần mềm tính toán Cầu gỗ phục vụ học tập, nghiên cứu và phát triển theo hướng chuẩn hoá, tách biệt UI và lõi tính toán.
-
----
-
-## 1. Mục tiêu phiên bản 2026
-
-- Làm lại phần mềm từ đầu.
-- Giữ lại giao diện (UI) của phiên bản cũ.
-- Viết lại toàn bộ lõi tính toán theo kiến trúc rõ ràng.
-- Tách UI và Logic để dễ bảo trì, test và mở rộng.
-- Làm việc chuẩn Git + VS Code + MATLAB.
+Mục tiêu: làm lại phần mềm theo kiến trúc sạch, dễ bảo trì, dùng lại GUI hiện có, đưa logic vào package `+core`.
 
 ---
 
-## 2. Kiến trúc dự án
+## 1) Trạng thái hiện tại
 
+- Đã tạo kiến trúc package: `+core/+nhipcau`.
+- Đã có 3 solver con (skeleton) cho Nhịp cầu phần mặt cầu:
+  - `core.nhipcau.solve_vanvet(DS)`.
+  - `core.nhipcau.solve_bovia(DS)`.
+  - `core.nhipcau.solve_vanlatngang(DS)`.
+- Đã có orchestrator:
+  - `core.nhipcau.solve_deck(DS)` gọi lần lượt 3 solver con.
+- Đã test STEP 1 chạy OK bằng `tests/test_deck_step1.m`.
+- Hiện tại mới là skeleton, chưa nhét công thức thật.
+
+---
+
+## 2) Kiến trúc thư mục
+```
 CauGo_Project/
-│```
-├── app/ % Chứa file .mlapp (UI)
-├── core/ % Lõi tính toán
-├── data/ % Cấu trúc dữ liệu (DS, validate, mapping)
-├── ui/ % Hàm trung gian giữa UI và core
-├── tests/ % Script test không cần mở UI
-│
-├── run_app.m % Entry point
+├── +core/
+│ └── +nhipcau/
+│ ├── solve_deck.m
+│ ├── solve_vanvet.m
+│ ├── solve_bovia.m
+│ └── solve_vanlatngang.m
+├── tests/
+│ └── test_deck_step1.m
+├── CauGo_AI.mlapp
+├── CauGoData.m
 ├── README.md
 ├── CHANGELOG.md
 └── PROJECT_CONTEXT.md
@@ -32,28 +38,48 @@ CauGo_Project/
 
 ---
 
-## 3. Nguyên tắc phát triển
+## 3) Quy ước dữ liệu (DS)
 
-- Không viết logic trong UI.
-- UI chỉ làm nhiệm vụ hiển thị và nhận input.
-- Mọi tính toán phải nằm trong `core/`.
-- Mỗi bước hoàn thành xong mới chuyển bước tiếp theo.
-- Mỗi task phải có commit riêng.
-
----
-
-## 4. Workflow chuẩn
-
-1. Sửa code
-2. Test chạy được
-3. Cập nhật CHANGELOG
-4. Commit
-5. Push
+- DS là struct trung tâm.
+- Kết quả phần mặt cầu thuộc Nhịp cầu lưu vào:
+  - `DS.KetQua.NhipCau.VanVet.kt`.
+  - `DS.KetQua.NhipCau.BoVia.kt`.
+  - `DS.KetQua.NhipCau.BoVia.lbv_cm`.
+  - `DS.KetQua.NhipCau.VLN.lvln_cm`.
+  - `DS.KetQua.NhipCau.VLN.kt`.
+- Chưa triển khai công thức thật ở các solver (đang skeleton).
 
 ---
 
-## 5. Trạng thái hiện tại
+## 4) Cách test chuẩn (đã chốt)
 
-Đang trong giai đoạn Rebuild 2026:
-- Chưa có lõi tính toán.
-- Chuẩn bị thiết kế lại cấu trúc dữ liệu.
+Chạy trong MATLAB Command Window:
+
+```matlab
+restoredefaultpath; rehash toolboxcache
+cd 'C:\Users\ADM\CauGo_Project'
+addpath(pwd); rehash
+
+which CauGoData
+which core.nhipcau.solve_deck
+
+run('tests/test_deck_step1.m')
+Nếu gặp lỗi “script as a function”, xử lý nhanh:
+
+clear functions
+rehash toolboxcache
+run('tests/test_deck_step1.m')
+```
+## 5) Kế hoạch bước tiếp theo
+STEP 2: nhét công thức thật cho 3 solver:
+
+ván vệt.
+
+bó vỉa.
+
+ván lát ngang (tính full: sigma/tau, m, c’, a, Mmax, W, hvln, kt_vln, lvln).
+
+STEP 2 có test riêng: tests/test_deck_step2.m.
+
+
+---

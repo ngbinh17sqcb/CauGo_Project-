@@ -1,19 +1,19 @@
-# CHANGELOG
-
-Tất cả thay đổi quan trọng của dự án sẽ được ghi tại đây.
-
----
-
-## [2026-02-13] - Rebuild Phase Started
+## [2026-02-14] - Step 1: Skeleton Nhịp cầu (phần mặt cầu) + test OK
 
 ### Added
-- Quyết định làm lại phần mềm từ đầu.
-- Định hướng giữ UI cũ, viết lại toàn bộ logic.
-- Chuẩn hoá lại cấu trúc thư mục.
+- Tạo package `+core/+nhipcau`.
+- Thêm orchestrator `core.nhipcau.solve_deck(DS)`.
+- Thêm 3 solver con (skeleton):
+  - `core.nhipcau.solve_vanvet(DS)`.
+  - `core.nhipcau.solve_bovia(DS)`.
+  - `core.nhipcau.solve_vanlatngang(DS)`.
+- Thêm `CauGoData.m` (default DS tối thiểu để test).
+- Thêm `tests/test_deck_step1.m` để xác nhận pipeline chạy được.
 
-### Changed
-- Reset định hướng phát triển.
-- Ngừng sử dụng logic cũ trong .mlapp.
+### Fixed
+- Chốt quy trình test chuẩn bằng MATLAB (restoredefaultpath + addpath(pwd)).
+- Sửa lỗi MATLAB coi file solver là script (đảm bảo file bắt đầu bằng `function` + clear functions/rehash).
 
 ### Notes
-Đây là mốc nền (baseline) cho phiên bản 2026.
+- Hiện tại mới skeleton, chưa triển khai công thức thật cho ván vệt/bó vỉa/VLN.
+- Bước tiếp theo: triển khai công thức + test Step 2.

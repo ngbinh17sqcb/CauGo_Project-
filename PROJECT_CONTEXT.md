@@ -1,53 +1,60 @@
 # PROJECT_CONTEXT
 
-## 1. Thông tin chung
+## 1) Thông tin dự án
 
-- Tên dự án: CauGo_Project
-- Phiên bản: Rebuild 2026
-- Chủ trì: Bình
-- Năm thực hiện: 2026
-
----
-
-## 2. Định hướng phát triển
-
-Dự án được làm lại từ đầu với mục tiêu:
-
-- Giữ lại giao diện cũ.
-- Viết lại toàn bộ lõi tính toán.
-- Tách biệt UI và Logic.
-- Phát triển theo từng bước nhỏ, hoàn thành bước nào chắc bước đó.
+- Tên: CauGo_Project.
+- Giai đoạn: Rebuild 2026.
+- Mục tiêu: dùng lại GUI, tách logic vào `+core`, làm theo từng bước nhỏ (done mới tiếp tục).
 
 ---
 
-## 3. Trạng thái hiện tại
+## 2) Module chính
 
-- UI: Có (phiên bản cũ).
-- Core: Chưa có.
-- Data structure: Chưa thiết kế.
-- Tests: Chưa có.
+- Nhịp cầu.
+- Chân cầu.
+- Mố cầu.
 
----
+Trong Nhịp cầu gồm:
+- Ván lát ngang (VLN).
+- Ván vệt.
+- Bó vỉa.
+- Dầm cầu (để sau).
 
-## 4. Nguyên tắc làm việc
-
-- Không sửa file cũ nếu không cần thiết.
-- Không viết logic trong .mlapp.
-- Mỗi bước phải chạy được trước khi tiếp tục.
-- Commit theo từng task rõ ràng.
-
----
-
-## 5. Kế hoạch trước mắt
-
-Bước 1: Chuẩn hoá cấu trúc dự án.  
-Bước 2: Thiết kế cấu trúc dữ liệu (DS).  
-Bước 3: Tạo khung core rỗng.  
-Bước 4: Kết nối UI với core mới.  
-Bước 5: Viết từng module tính toán (DamCau → ChanGia → ...).
+Hôm nay đã làm đến:
+- Nhịp cầu: VLN + ván vệt + bó vỉa (mới skeleton, chưa công thức).
 
 ---
 
-## 6. Lưu ý quan trọng
+## 3) Tiến độ hiện tại (đã xác nhận chạy OK)
 
-Mục tiêu của bản 2026 không phải làm nhanh, mà làm đúng kiến trúc để có thể mở rộng lâu dài.
+- Đã tạo `+core/+nhipcau` và các file:
+  - `solve_deck.m`.
+  - `solve_vanvet.m`.
+  - `solve_bovia.m`.
+  - `solve_vanlatngang.m`.
+- Đã có test `tests/test_deck_step1.m` và chạy OK.
+- Đã chốt chuẩn lưu kết quả:
+  - `DS.KetQua.NhipCau.VanVet.kt`.
+  - `DS.KetQua.NhipCau.BoVia.kt`, `DS.KetQua.NhipCau.BoVia.lbv_cm`.
+  - `DS.KetQua.NhipCau.VLN.lvln_cm`, `DS.KetQua.NhipCau.VLN.kt`.
+
+---
+
+## 4) Quy tắc kỹ thuật đã chốt
+
+- Package MATLAB dùng dấu `+`:
+  - `+core/+nhipcau/...`.
+- Khi test package: chỉ cần `addpath(pwd)` (không bắt buộc genpath).
+- Khi MATLAB cache lỗi “not found” hoặc “script as function”:
+  - dùng `clear functions` + `rehash toolboxcache`.
+
+---
+
+## 5) Bước tiếp theo (STEP 2)
+
+- Triển khai công thức thật cho:
+  - `solve_vanvet`.
+  - `solve_bovia`.
+  - `solve_vanlatngang` (tính full).
+- Tạo test `tests/test_deck_step2.m` với 1 bộ số mẫu, ra đúng kết quả kỳ vọng.
+- Sau khi Step 2 OK mới tính tiếp dầm cầu hoặc chuyển module khác.
