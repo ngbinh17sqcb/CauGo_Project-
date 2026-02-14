@@ -16,6 +16,13 @@ Mục tiêu: làm lại phần mềm theo kiến trúc sạch, dễ bảo trì, 
 - Đã test STEP 1 chạy OK bằng `tests/test_deck_step1.m`.
 - Hiện tại mới là skeleton, chưa nhét công thức thật.
 
+- STEP 2.1: Ván vệt đã DONE:
+  - Core: `core.nhipcau.solve_vanvet(DS)` + lưu số liệu thô.
+  - Test: `tests/test_vanvet_step2.m` chạy OK.
+  - UI: hiển thị kết quả ra `EF_kt_vanvet`.
+  - Export: `+report/make_export_vanvet.m` + `+io/export_to_excel.m`.
+  - Xuất Excel vào `C:\Users\ADM\CauGo_Project\+xuatdulieu` và tự mở file sau khi xuất.
+
 ---
 
 ## 2) Kiến trúc thư mục
@@ -29,6 +36,12 @@ CauGo_Project/
 │ └── solve_vanlatngang.m
 ├── tests/
 │ └── test_deck_step1.m
+├── +io/
+│ └── export_to_excel.m
+├── +report/
+│ └── make_export_vanvet.m
+├── +xuatdulieu/
+│ └── (các file DuLieuCauGo_*.xlsx)
 ├── CauGo_AI.mlapp
 ├── CauGoData.m
 ├── README.md
@@ -39,7 +52,7 @@ CauGo_Project/
 ---
 
 ## 3) Quy ước dữ liệu (DS)
-
+- Danh sách Component Name của app: `COMPONENT_NAMES.md`.
 - DS là struct trung tâm.
 - Kết quả phần mặt cầu thuộc Nhịp cầu lưu vào:
   - `DS.KetQua.NhipCau.VanVet.kt`.
@@ -69,6 +82,15 @@ Nếu gặp lỗi “script as a function”, xử lý nhanh:
 clear functions
 rehash toolboxcache
 run('tests/test_deck_step1.m')
+```
+## 4.1) Test ván vệt (STEP 2.1)
+
+```matlab
+restoredefaultpath; rehash toolboxcache
+cd 'C:\Users\ADM\CauGo_Project'
+addpath(genpath(pwd)); rehash
+
+run('tests/test_vanvet_step2.m')
 ```
 ## 5) Kế hoạch bước tiếp theo
 STEP 2: nhét công thức thật cho 3 solver:

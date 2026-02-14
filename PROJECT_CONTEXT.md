@@ -21,7 +21,9 @@ Trong Nhịp cầu gồm:
 - Dầm cầu (để sau).
 
 Hôm nay đã làm đến:
-- Nhịp cầu: VLN + ván vệt + bó vỉa (mới skeleton, chưa công thức).
+- Nhịp cầu: ván vệt DONE (core + UI + test + export).
+- Bó vỉa + VLN: vẫn đang skeleton, chưa công thức.
+
 
 ---
 
@@ -37,6 +39,14 @@ Hôm nay đã làm đến:
   - `DS.KetQua.NhipCau.VanVet.kt`.
   - `DS.KetQua.NhipCau.BoVia.kt`, `DS.KetQua.NhipCau.BoVia.lbv_cm`.
   - `DS.KetQua.NhipCau.VLN.lvln_cm`, `DS.KetQua.NhipCau.VLN.kt`.
+- STEP 2.1 (Ván vệt) đã DONE:
+  - `core.nhipcau.solve_vanvet(DS)` triển khai logic thật theo H và loại gỗ.
+  - Lưu thêm số liệu thô để xuất dữ liệu (d/b/h, is_tron, loai_go).
+  - Test: `tests/test_vanvet_step2.m` chạy OK.
+  - UI: đã gắn nút tính để hiển thị `EF_kt_vanvet`.
+  - Export: đã có `+report/make_export_vanvet.m` + `+io/export_to_excel.m`.
+  - Xuất file vào `C:\Users\ADM\CauGo_Project\+xuatdulieu` và tự mở Excel.
+
 
 ---
 
@@ -52,9 +62,11 @@ Hôm nay đã làm đến:
 
 ## 5) Bước tiếp theo (STEP 2)
 
-- Triển khai công thức thật cho:
-  - `solve_vanvet`.
+- STEP 2.2: triển khai công thức thật cho:
   - `solve_bovia`.
   - `solve_vanlatngang` (tính full).
-- Tạo test `tests/test_deck_step2.m` với 1 bộ số mẫu, ra đúng kết quả kỳ vọng.
-- Sau khi Step 2 OK mới tính tiếp dầm cầu hoặc chuyển module khác.
+- Tạo test:
+  - `tests/test_deck_step2.m` (deck gồm ván vệt + bó vỉa + VLN).
+- Chuẩn hoá export “all kết cấu”:
+  - `report.make_export_all(DS)` gom Nhịp cầu/Chân cầu/Mố cầu.
+  - Nút xuất dữ liệu xuất 1 file Excel duy nhất theo timestamp + lần xuất.
